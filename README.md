@@ -1,13 +1,6 @@
 # The Most Excellent Team Six AirBnB
 
-## Stuff so far
-
-* User Stories
-* MVP
-* Implementation technologies decided
-
 # User Stories
-------
 We first worked out the following user stories that we need to implement.
 
 ```
@@ -52,21 +45,33 @@ So I can manage my potential customer's expectations,
 I want my listing to be available on any given date until I've confirmed a booking for that date
 ```
 
+MVP
+-----
 We decided the minimum viable product we could present to a client would include:
 - adding a space to the listings
 - viewing a list of available spaces
 
-Our MVP is available here currently: https://beastmakersbnb.herokuapp.com/
+We mostly worked in two groups of three, occasionally splitting into 3 pairs when there were multiple user stories that could be worked on concurrently.
 
-We then split into two groups of three to work on the next two user stories: allowing a user to sign up, and adding date availability to the spaces pages.
+Technologies used
+-----
+Ruby, DataMapper, PostgreSQL, jQuery, rSpec, Capybara, Heroku, Sinatra, bCrypt
 
+Viewing the app
+-----
+Our app can be viewed here: https://beastmakersbnb.herokuapp.com/
+
+![alt text]()
 
 Decisions we made
 ----
-- We deliberated for a long time about how to deal with date availability for spaces. We decided to deal with it within a separate booking class that would contain the date a property was booked on, and would be linked to that property, in a one-to-many relationship.We were then able to filter the spaces by available date using DataMapper
+- We deliberated for a long time about how to deal with date availability for spaces. We decided to use a separate booking class that would contain the date a property was booked on, and would be linked to that property, in a one-to-many relationship. We were then able to filter the spaces by available date using DataMapper
 - The next issue was how to display availability in a calendar format on the space's landing page. We wanted to use a jQuery datepicker, and grey out unavailable dates. This meant combining ruby on the back end with Javascript - our solution was to pull the unavailable dates into an array using ruby, and have a script tag convert it to a JavaScript variable that jQuery can access.
 - We decided to implement a show/hide password box after reading that 25% of users abandon sign-up when encountering problems with password confirmation boxes.
+- In order to allow the user to select dates for their booking via a calendar widget we used a jQuery datepicker.
 
 Issues we encountered
 ----
-- should we create new user stories for every new "sub-feature", e.g. email validation, checking for unique email address etc.
+- Accessing spaces via bookings, and vice versa. We ended up with a few lengthily chained commands that we would like to refactor.
+- Initially we passed several params into the view, which we then refactored, saving them in instance variables within the controller.
+- As it was our first time working on a group project, we encountered a few issues with merge conflicts that took time to sort.
